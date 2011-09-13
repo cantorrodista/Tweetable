@@ -21,6 +21,7 @@
 						user: false,				  // display username in front of tweet
             time: false, 					//display date
             replies: false,				//filter out @replys
+						api: "http://api.twitter.com/1/statuses/user_timeline.json?screen_name=",
             position: 'append'			//append position
         };
         //overwrite the defaults
@@ -33,12 +34,12 @@
             var tweetMonth = '';
             var shortMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 						var tweetUser = defaults.user ? '<span class="username">' + defaults.username + ": " + '</span>' : '';
-            var api = "http://api.twitter.com/1/statuses/user_timeline.json?screen_name=";
+            var g = defaults.api;
             var count = "&count=";
 
 						
             //do a JSON request to twitters API
-            $.getJSON(api + defaults.username + count + defaults.limit + "&callback=?", act, function (data) {
+            $.getJSON(g + defaults.username + count + defaults.limit + "&callback=?", act, function (data) {
 				//loop through twitters response
                 $.each(data, function (i, item) {
 					//check for the first loop
