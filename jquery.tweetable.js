@@ -69,6 +69,7 @@
                     }
                 });
                 //close the unordered list
+								$('ul.tweetList a').attr("target", "_blank");	
                });
         });
     }
